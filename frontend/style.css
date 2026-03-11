@@ -1,0 +1,326 @@
+:root {
+  --gl-bg: #020404;
+  --gl-bg-elevated: #050b0c;
+  --gl-accent: #4cff88;
+  --gl-accent-soft: rgba(76, 255, 136, 0.14);
+  --gl-accent-strong: #38e072;
+  --gl-border: #1b2628;
+  --gl-border-soft: rgba(255, 255, 255, 0.04);
+  --gl-text: #f5f7f7;
+  --gl-text-muted: #9ca9ad;
+  --gl-danger: #ff4b6a;
+  --gl-radius-lg: 18px;
+  --gl-radius-md: 12px;
+  --gl-radius-pill: 999px;
+  --gl-shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.75);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #0a2311 0, #020404 50%);
+  color: var(--gl-text);
+}
+
+.gl-page {
+  min-height: 100vh;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.gl-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.gl-logo-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  background: radial-gradient(circle at 20% 20%, var(--gl-accent) 0, #071b0d 60%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #020404;
+  box-shadow: 0 0 24px rgba(76, 255, 136, 0.5);
+}
+
+.gl-header-text h1 {
+  margin: 0 0 4px;
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+}
+
+.gl-header-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--gl-text-muted);
+}
+
+.gl-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr);
+  gap: 22px;
+}
+
+.gl-panel {
+  background: radial-gradient(circle at top right, #11251a 0, #050b0c 55%);
+  border-radius: var(--gl-radius-lg);
+  border: 1px solid var(--gl-border-soft);
+  box-shadow: var(--gl-shadow-soft);
+  padding: 20px 20px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gl-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      120deg,
+      rgba(76, 255, 136, 0.16),
+      transparent 55%
+    );
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.gl-panel h2 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
+
+.gl-subtitle {
+  margin: 0 0 16px;
+  font-size: 0.82rem;
+  color: var(--gl-text-muted);
+}
+
+.gl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.gl-form--query {
+  margin-bottom: 14px;
+}
+
+.gl-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--gl-text-muted);
+}
+
+input[type="file"],
+textarea {
+  width: 100%;
+  border-radius: var(--gl-radius-md);
+  border: 1px solid var(--gl-border);
+  background: rgba(1, 5, 6, 0.9);
+  color: var(--gl-text);
+  padding: 9px 11px;
+  font-size: 0.86rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+input[type="file"]:focus,
+textarea:focus {
+  border-color: var(--gl-accent-strong);
+  box-shadow: 0 0 0 1px var(--gl-accent-soft);
+  background: #020606;
+}
+
+.gl-button {
+  border-radius: var(--gl-radius-pill);
+  border: 1px solid var(--gl-border);
+  background: rgba(5, 13, 10, 0.95);
+  color: var(--gl-text);
+  padding: 8px 16px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.16s ease, color 0.16s ease,
+    border-color 0.16s ease, box-shadow 0.16s ease, transform 0.08s ease;
+}
+
+.gl-button--primary {
+  background: linear-gradient(135deg, var(--gl-accent) 0, var(--gl-accent-strong) 40%, #1ad55a 100%);
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(76, 255, 136, 0.5);
+}
+
+.gl-button--ghost {
+  background: transparent;
+  border-color: var(--gl-border);
+  color: var(--gl-text-muted);
+}
+
+.gl-button:hover {
+  transform: translateY(-1px);
+}
+
+.gl-button--primary:hover {
+  box-shadow: 0 0 26px rgba(76, 255, 136, 0.7);
+}
+
+.gl-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.gl-form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gl-hint {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--gl-text-muted);
+}
+
+.gl-status {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--gl-text-muted);
+  min-height: 1.1em;
+}
+
+.gl-status--success {
+  color: var(--gl-accent);
+}
+
+.gl-status--error {
+  color: var(--gl-danger);
+}
+
+.gl-output {
+  margin-top: 4px;
+  border-radius: var(--gl-radius-md);
+  border: 1px solid var(--gl-border);
+  background: rgba(3, 7, 8, 0.92);
+  padding: 10px 11px 11px;
+  position: relative;
+  z-index: 1;
+}
+
+.gl-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.gl-pill {
+  padding: 3px 9px;
+  border-radius: var(--gl-radius-pill);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--gl-border);
+  background: radial-gradient(circle at left, var(--gl-accent-soft) 0, transparent 60%);
+}
+
+.gl-status-text {
+  font-size: 0.75rem;
+  color: var(--gl-text-muted);
+}
+
+.gl-output-body {
+  max-height: 260px;
+  overflow: auto;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.gl-output-body p {
+  margin: 0 0 8px;
+}
+
+.gl-placeholder {
+  color: var(--gl-text-muted);
+}
+
+.gl-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--gl-text-muted);
+  opacity: 0.9;
+}
+
+.gl-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--gl-accent);
+  box-shadow: 0 0 10px rgba(76, 255, 136, 0.8);
+}
+
+code {
+  font-family: "Space Grotesk", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.78rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+@media (max-width: 880px) {
+  .gl-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gl-panel--left {
+    order: 2;
+  }
+
+  .gl-panel--right {
+    order: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .gl-page {
+    padding-inline: 14px;
+  }
+
+  .gl-header-text h1 {
+    font-size: 1.4rem;
+  }
+}
+
