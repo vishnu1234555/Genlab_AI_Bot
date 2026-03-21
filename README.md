@@ -1,30 +1,32 @@
 # GenLab AI Bot
 
-A Retrieval-Augmented Generation (RAG) backend API built with FastAPI. This application allows users to upload PDF documents, index their contents into a Qdrant vector database using local Ollama embeddings, and query the documents using a Groq-powered LLM.
+This is a Retrieval-Augmented Generation (RAG) backend API I built using FastAPI. It lets you upload PDF documents, index them into a Qdrant vector database using local Ollama embeddings, and then ask questions about those documents.
 
-## 🚀 Features
+It uses Groq for the LLM to keep inference super fast, while saving on embedding costs by running them locally with Ollama.
 
-* **PDF Ingestion:** Upload and parse PDF documents on the fly.
-* **Local Embeddings:** Generates vector embeddings locally using Ollama (`nomic-embed-text` by default) to save on API costs and ensure privacy.
-* **Vector Storage:** Stores and retrieves document chunks using Qdrant.
-* **High-Speed Inference:** Utilizes Groq's API (`llama-3.3-70b-versatile`) for incredibly fast and accurate answer generation based on retrieved context.
-* **FastAPI Backend:** Fully asynchronous API with Swagger UI documentation.
+## Tech Stack
+* **API Framework**: FastAPI
+* **Orchestration**: LangChain
+* **LLM**: Groq (`llama-3.3-70b-versatile`)
+* **Embeddings**: Ollama (`nomic-embed-text` by default)
+* **Vector DB**: Qdrant
 
-## 🛠️ Tech Stack
-
-* **Framework:** [FastAPI](https://fastapi.tiangolo.com/)
-* **Orchestration:** [LangChain](https://python.langchain.com/)
-* **LLM:** [Groq](https://groq.com/) (`llama-3.3-70b-versatile`)
-* **Embeddings:** [Ollama](https://ollama.com/)
-* **Vector Database:** [Qdrant](https://qdrant.tech/)
-
-## 📋 Prerequisites
-
-Before running this project, ensure you have the following installed and set up:
-
+## Prerequisites
+Make sure you have a few things set up before running this:
 1. **Python 3.10+**
-2. **Ollama:** Installed and running locally or on a remote server. You must pull your preferred embedding model (e.g., `ollama pull nomic-embed-text`).
-3. **Qdrant:** A Qdrant Cloud cluster or a local Docker instance running.
-4. **Groq API Key:** Obtain an API key from the Groq console.
+2. **Ollama**: Installed and running locally. Run `ollama pull nomic-embed-text` to get the embedding model.
+3. **Qdrant**: Either a local Docker instance or a Qdrant Cloud cluster.
+4. **Groq API Key**: Grab one from the Groq console.
 
+## Environment Variables
+Create a `.env` file in the root directory and add the following:
 
+```env
+GROQ_API_KEY=your_groq_api_key_here
+QDRANT_URL=your_qdrant_url_here
+QDRANT_API_KEY=your_qdrant_api_key_here
+
+# Optional Overrides
+EMBEDDING_MODEL=nomic-embed-text
+OLLAMA_BASE_URL=http://localhost:11434  # Use [http://host.docker.internal:11434](http://host.docker.internal:11434) if running in Docker
+QDRANT_COLLECTION=GenLab
