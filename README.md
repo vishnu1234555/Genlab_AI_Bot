@@ -27,19 +27,4 @@ Before running this project, ensure you have the following installed and set up:
 3. **Qdrant:** A Qdrant Cloud cluster or a local Docker instance running.
 4. **Groq API Key:** Obtain an API key from the Groq console.
 
-## ⚙️ Environment Variables
 
-Create a `.env` file in the root directory and configure the following variables:
-
-```env
-# Groq Setup
-GROQ_API_KEY=your_groq_api_key_here
-
-# Qdrant Setup
-QDRANT_URL=your_qdrant_cluster_url
-QDRANT_API_KEY=your_qdrant_api_key
-QDRANT_COLLECTION=GenLab # Optional, defaults to GenLab
-
-# Ollama Setup
-EMBEDDING_MODEL=nomic-embed-text # Optional, defaults to nomic-embed-text
-OLLAMA_BASE_URL=http://localhost:11434 # Or [http://host.docker.internal:11434](http://host.docker.internal:11434) if running in Docker
