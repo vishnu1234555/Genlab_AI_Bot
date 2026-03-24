@@ -10,6 +10,7 @@ It uses Groq for the LLM to keep inference super fast, while saving on embedding
 * **LLM**: Groq (`llama-3.3-70b-versatile`)
 * **Embeddings**: Ollama (`nomic-embed-text` by default)
 * **Vector DB**: Qdrant
+* **Containerization**: Docker
 
 ## Prerequisites
 
