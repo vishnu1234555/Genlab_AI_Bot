@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GenLab RAG Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="gl-page">
+      <header class="gl-header">
+        <div class="gl-logo-mark">G</div>
+        <div class="gl-header-text">
+          <h1>GenLab Knowledge Console</h1>
+          <p>Ask anything about GenLab. Powered by your RAG backend.</p>
+        </div>
+      </header>
+
+      <main class="gl-main">
+        <section class="gl-panel gl-panel--left">
+          <h2>Upload Document</h2>
+          <p class="gl-subtitle">Index a new PDF into your GenLab knowledge base.</p>
+          <form class="gl-form" id="upload-form">
+            <label class="gl-label">
+              PDF file
+              <input type="file" id="pdf-file" accept="application/pdf" />
+            </label>
+            <button type="submit" class="gl-button">Upload &amp; Index</button>
+            <p class="gl-hint">This should call your existing <code>upload.py</code> endpoint once you expose it.</p>
+          </form>
+          <div id="upload-status" class="gl-status"></div>
+        </section>
+
+        <section class="gl-panel gl-panel--right">
+          <h2>Ask GenLab</h2>
+          <p class="gl-subtitle">Your all‑knowing GenLab assistant will answer based on the indexed documents.</p>
+
+          <form class="gl-form gl-form--query" id="query-form">
+            <label class="gl-label">
+              Your question
+              <textarea id="question-input" rows="3" placeholder="e.g. What are GenLab's core divisions and services?"></textarea>
+            </label>
+            <div class="gl-form-row">
+              <button type="submit" class="gl-button gl-button--primary">Ask GenLab</button>
+              <button type="button" class="gl-button gl-button--ghost" id="clear-btn">Clear</button>
+            </div>
+          </form>
+
+          <div class="gl-output">
+            <div class="gl-output-header">
+              <span class="gl-pill">Answer</span>
+              <span class="gl-status-text" id="answer-status"></span>
+            </div>
+            <div class="gl-output-body" id="answer-output">
+              <p class="gl-placeholder">Responses from your `retrieve.py` endpoint will appear here.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="gl-footer">
+        <span>GenLab RAG Playground</span>
+        <span class="gl-dot"></span>
+        <span>Green &amp; black cyber theme inspired by genlab.cc</span>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
+
